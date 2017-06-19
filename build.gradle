@@ -79,7 +79,7 @@ assemble.dependsOn asciidoctor, asciidoctorPdf
         'data-uri': '', // embed images directly in the html
         'source-highlighter': 'rouge',
         'pdf-stylesdir': file('src/theme'),
-        'pdf-style': 'adesso',
+        'pdf-style': 'custom',
         'pdf-fontsdir': file('src/fonts'),
         'plantuml-config': file('plantuml.config.txt')
 
