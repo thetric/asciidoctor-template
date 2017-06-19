@@ -31,7 +31,7 @@ dependencies {
 }
 
 asciidoctorj.version = '1.5.5'
-jruby.execVersion '9.1.10.0'
+jruby.execVersion '9.1.12.0'
 
 // The gems are just utility for rendering diagrams, they do not belong in the outputDir
 jrubyPrepare.outputDir = file('.gradle/gems')
