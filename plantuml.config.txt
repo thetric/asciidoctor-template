@@ -1,0 +1,39 @@
+skinparam shadowing false
+hide circle
+
+skinparam class {
+    ArrowColor #212121
+    AttributeIconSize 0
+    BackgroundColor #E3F2FD
+    BorderColor #0D47A1
+}
+
+skinparam node {
+    ArrowColor #212121
+    BackgroundColor #E3F2FD
+    BorderColor #0D47A1
+}
+
+skinparam component {
+    ArrowColor #212121
+    BackgroundColor #E3F2FD
+    BorderColor #0D47A1
+}
+
+skinparam database {
+    ArrowColor #212121
+    BackgroundColor #E3F2FD
+    BorderColor #0D47A1
+}
+
+skinparam artifact {
+    ArrowColor #212121
+    BackgroundColor #E3F2FD
+    BorderColor #0D47A1
+}
+
+skinparam actor {
+    ArrowColor #212121
+    BackgroundColor #E3F2FD
+    BorderColor #0D47A1
+}

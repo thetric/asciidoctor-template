@@ -1,0 +1,100 @@
+buildscript {
+    repositories {
+        jcenter()
+        maven { url 'https://plugins.gradle.org/m2/' }
+        maven { url 'https://jitpack.io' }
+    }
+
+    dependencies {
+        classpath 'org.asciidoctor:asciidoctor-gradle-plugin:1.5.3'
+        classpath 'com.github.jruby-gradle:jruby-gradle-plugin:1.4.0'
+        classpath 'com.github.jeysal:gradle-graphviz-plugin:1.4.0'
+    }
+}
+
+plugins {
+    id 'org.asciidoctor.convert' version '1.5.3'
+    // asciidoctor-diagram PlantUML integration via jruby
+    id 'com.github.jruby-gradle.base' version '1.4.0'
+}
+
+// Since asciidocs are the only output of this subproject, assembly should include them
+assemble.dependsOn asciidoctor
+
+dependencies {
+    gems('rubygems:asciidoctor-diagram:1.5.4') {
+        exclude module: 'asciidoctor'
+        exclude module: 'thread_safe'
+    }
+    gems 'rubygems:asciidoctor-pdf:1.5.0.alpha.15'
+}
+
+asciidoctorj.version = '1.5.5'
+jruby.execVersion '9.1.10.0'
+
+// The gems are just utility for rendering diagrams, they do not belong in the outputDir
+jrubyPrepare.outputDir = file('.gradle/gems')
+
+
+import org.asciidoctor.gradle.AsciidoctorTask
+import org.asciidoctor.gradle.ResourceCopyProxyImpl
+import org.gradle.internal.FileUtils
+
+// asciidoctor pdf task
+
+task asciidoctorPdf(type: AsciidoctorTask) {
+    backends 'pdf'
+}
+
+assemble.dependsOn asciidoctor, asciidoctorPdf
+
+// common asciidoctor config
+
+[asciidoctor, asciidoctorPdf]*.configure {
+    dependsOn jrubyPrepare
+    requires = ['asciidoctor-diagram']
+    gemPath = jrubyPrepare.outputDir
+    sourceDir = file 'src'
+    sources {
+        include 'index.adoc'
+    }
+    outputDir = file("$outputDir")
+    separateOutputDirs = false
+    attributes imagesdir: "$outputDir/images",
+        outdir: outputDir
+
+    attributes encoding: 'utf-8',
+        lang: 'de',
+        toc: 'left',
+        'toc-title': 'Inhaltsverzeichnis',
+        'table-caption': 'Tabelle',
+        'figure-caption': 'Abbildung',
+        'appendix-caption': 'Anhang',
+        numbered: '',
+        sectnumlevels: 6,
+        toclevels: 3,
+        icons: 'font',
+        experimental: '',
+        'data-uri': '', // embed images directly in the html
+        'source-highlighter': 'coderay',
+        'pdf-stylesdir': file('src/theme'),
+        'pdf-style': 'adesso',
+        'pdf-fontsdir': file('src/fonts'),
+        'plantuml-config': file('plantuml.config.txt')
+
+    inputs.files 'src/theme', 'src/fonts', 'plantuml.config.txt'
+
+    // start out by copying resources ourselves as asciidoctor does it too late
+    doFirst {
+        new ResourceCopyProxyImpl(project).copy(
+            separateOutputDirs
+                ? new File(outputDir, FileUtils.toSafeFileName(backend))
+                : outputDir,
+            resourceCopySpec
+        )
+    }
+}
+
+// portable Graphviz dot executable for asciidoctor-diagram
+
+apply plugin: 'com.github.jeysal.graphviz'

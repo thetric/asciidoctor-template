@@ -1,0 +1,33 @@
+= Asciidoctor Template with Gradle support
+
+This is a simple template to create documents (PDFs, HTML, ...) from Asciidoctor sources with a customizable theme.
+
+This templates includes:
+
+* Asciidoctor Diagram support (e. g. PlantUML)
+* customizable PDF theme
+* custom PlantUML theme
+* some fonts included (Roboto, Open Sans, Fira Code)
+
+== Getting Started
+
+Execute the following command to build a PDF and a HTML version from the sources:
+
+[source,bash]
+----
+./gradlew b
+----
+
+The final documents can be found at `build/asciidoctor`.
+
+IMPORTANT: All images must be located in `src/images` because Asciidoctor resolves the image paths to this directory.
+
+== Customizing the PDF theme
+
+The PDF theme can be easily changed to your preferences by editing `src/theme/custom-theme.yml`.
+For a settings reference see https://github.com/asciidoctor/asciidoctor-pdf/blob/master/docs/theming-guide.adoc.
+
+== Known issues
+
+* Updating the Ruby Gems' version in the `build.gradle` does not cause Gradle to update the Gem files.
+You have to delete the `.gradle/gems` folder.
