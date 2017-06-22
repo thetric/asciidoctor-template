@@ -32,7 +32,7 @@ font:
 page:
   background_color: ffffff
   layout: portrait
-  margin: [2.5cm, 1.5cm, 2.5cm, 2.5cm]
+  margin: [2.5cm, 2.5cm, 2.5cm, 2.5cm]
   # margin_inner and margin_outer keys are used for recto/verso print margins when media=prepress
   margin_inner: 2cm
   margin_outer: 1.5cm
