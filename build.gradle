@@ -21,7 +21,7 @@ plugins {
 assemble.dependsOn asciidoctor
 
 dependencies {
-    gems('rubygems:asciidoctor-diagram:1.5.4') {
+    gems('rubygems:asciidoctor-diagram:1.5.5') {
         exclude module: 'asciidoctor'
         exclude module: 'thread_safe'
     }
