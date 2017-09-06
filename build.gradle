@@ -7,7 +7,6 @@ buildscript {
 
     dependencies {
         classpath 'org.asciidoctor:asciidoctor-gradle-plugin:1.5.3'
-        classpath 'com.github.jruby-gradle:jruby-gradle-plugin:1.4.0'
         classpath 'com.github.jeysal:gradle-graphviz-plugin:1.4.0'
     }
 }
@@ -15,7 +14,7 @@ buildscript {
 plugins {
     id 'org.asciidoctor.convert' version '1.5.3'
     // asciidoctor-diagram PlantUML integration via jruby
-    id 'com.github.jruby-gradle.base' version '1.4.0'
+    id 'com.github.jruby-gradle.base' version '1.5.0'
 }
 
 // Since asciidocs are the only output of this subproject, assembly should include them
