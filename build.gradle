@@ -6,7 +6,6 @@ buildscript {
     }
 
     dependencies {
-        classpath 'org.asciidoctor:asciidoctor-gradle-plugin:1.5.3'
         classpath 'com.github.jeysal:gradle-graphviz-plugin:1.4.0'
     }
 }
