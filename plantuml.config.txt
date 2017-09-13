@@ -1,4 +1,5 @@
 skinparam shadowing false
+skinparam defaultFontName Roboto
 hide circle
 
 skinparam class {
@@ -37,3 +38,27 @@ skinparam actor {
     BackgroundColor #E3F2FD
     BorderColor #0D47A1
 }
+
+skinparam control {
+    ArrowColor #212121
+    BackgroundColor #E3F2FD
+    BorderColor #0D47A1
+}
+
+skinparam activity {
+    ArrowColor #212121
+    BackgroundColor #E3F2FD
+    BorderColor #0D47A1
+}
+
+skinparam sequenceLifeLine {
+    BackgroundColor #E3F2FD
+    BorderColor #0D47A1
+}
+
+skinparam note {
+    BackgroundColor #FFF59D
+    BorderColor #DD2C00
+}
+
+skinparam sequenceArrowColor #000000
