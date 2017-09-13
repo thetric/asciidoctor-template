@@ -77,7 +77,7 @@ assemble.dependsOn asciidoctor, asciidoctorPdf
         icons: 'font',
         experimental: '',
         'data-uri': '', // embed images directly in the html
-        'source-highlighter': 'rouge',
+        'source-highlighter': it.name == 'asciidoctor' ? 'highlightjs': 'rouge',
         'pdf-stylesdir': file('src/theme'),
         'pdf-style': 'custom',
         'pdf-fontsdir': file('src/fonts'),
