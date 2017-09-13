@@ -22,7 +22,7 @@ assemble.dependsOn asciidoctor
 dependencies {
     // override asciidoctor's old (1.7) jruby version
     asciidoctor 'org.jruby:jruby-complete:9.1.12.0'
-    gems('rubygems:asciidoctor-diagram:1.5.5') {
+    gems('rubygems:asciidoctor-diagram:1.5.4.1') {
         exclude module: 'asciidoctor'
         exclude module: 'thread_safe'
     }
