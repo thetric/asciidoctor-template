@@ -27,7 +27,7 @@ dependencies {
         exclude module: 'thread_safe'
     }
     gems 'rubygems:asciidoctor-pdf:1.5.0.alpha.16'
-    gems 'rubygems:rouge:2.2.1'
+    gems 'rubygems:rouge:3.0.0'
 }
 
 asciidoctorj.version = '1.5.6'
